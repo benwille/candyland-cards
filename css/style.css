@@ -1,0 +1,100 @@
+#stack {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.deck_div,
+.discard_div {
+	width: 350px;
+	min-height: 400px;
+	position: relative;
+}
+
+.card_container {
+	width: 250px;
+	height: 325px;
+	border: 1px solid black;
+	border-radius: 20px;
+	position: absolute;
+	background-color: white;
+}
+
+.color {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.square {
+	width: 150px;
+	height: 150px;
+	/* border: 1px solid black; */
+	margin: 5px 0;
+}
+
+.red > .square {
+	background-color: #f32b1b;
+}
+
+.purple > .square {
+	background-color: #c7369e;
+}
+
+.yellow > .square {
+	background-color: #f1d510;
+}
+
+.blue > .square {
+	background-color: #25aee1;
+}
+
+.green > .square {
+	background-color: #4cc929;
+}
+
+.orange > .square {
+	background-color: #f8680f;
+}
+
+.specialty {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100%;
+}
+
+.plumpy {
+	background-image: url(../images/plumpy.png);
+}
+
+.mr-mint {
+	background-image: url(../images/mr-mint.png);
+}
+
+.lolly {
+	background-image: url(../images/lolly.png);
+}
+
+.jolly {
+	background-image: url(../images/jolly.png);
+}
+
+.grandma-nutt {
+	background-image: url(../images/grandma-nutt.png);
+}
+
+.frostine {
+	background-image: url(../images/frostine.png);
+}
+
+/* .discard_div .card_container {
+    background-color: black;
+} */
+
+.deck_div .card_container .square {
+	background-color: white;
+}
+
+.deck_div .card_container .specialty {
+	background-image: none;
+}
