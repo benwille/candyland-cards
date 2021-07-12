@@ -38,6 +38,21 @@ Ben Wille ([Website](https://benwille.dev) | [Twitter](https://twiter.com/benwil
 - 1.0
   - Initial Release
 
+## Coming Soon
+
+### In Progress
+
+### Requests
+
+- Shuffle Button
+  - Adding shuffle button after all cards in deck have been used. This will reshuffle the deck.
+- Player Piles
+  - Option to add number of players (up to 4).
+  - Create a discard pile for each player
+  - When card is flipped, move it to current player's discard pile
+- Game Options
+  - Option to remove specialty cards from deck on subsequent shuffles.
+
 ## License
 
 This project is licensed under the ISC License
