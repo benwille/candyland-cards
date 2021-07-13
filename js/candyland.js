@@ -15,6 +15,8 @@ var specialty = [
 	{ id: 6, name: "frostine" },
 ];
 
+var stack = document.querySelector("#stack");
+
 let suitCheck = suits.filter((suit) => suit.id === 1);
 // console.log(suitCheck);
 
@@ -60,18 +62,32 @@ function Card(suit, number) {
 
 var cardClick = (function (e) {
 	var counter = 0;
+
 	return function (e) {
 		e.currentTarget.style.top = 0;
 		e.currentTarget.style.left = 0;
 		e.currentTarget.style.zIndex = counter;
 		counter++;
 		// console.log(counter);
-
+		if (counter >= 66) {
+			counter = 0;
+			deck.rebuildDeck();
+		}
 		var cardID = e.currentTarget;
 		cardID.onclick = "";
 		document.querySelector(".discard_div").appendChild(cardID);
 	};
 })();
+
+function shuffleClick(e) {
+	stack.innerHTML = "";
+	var deck = new Deck();
+	var discard = new DiscardPile();
+	stack.appendChild(deck.buildDeck());
+	stack.appendChild(discard.init());
+	// console.log(e.target.parentNode);
+	e.target.parentNode.innerHTML = "";
+}
 
 function Deck() {
 	this.cards = [];
@@ -122,6 +138,20 @@ function Deck() {
 		// console.log(frag);
 		return frag;
 	};
+	this.rebuildDeck = function () {
+		var button_div = document.createElement("div");
+		Object.assign(button_div.style, {
+			display: "block",
+			flex: "1 0 100%",
+		});
+
+		var button = document.createElement("button");
+		button.innerText = "Shuffle";
+		button_div.appendChild(button);
+		console.log(button_div);
+		stack.parentNode.appendChild(button_div);
+		button.onclick = shuffleClick;
+	};
 	this.getCards = function (number) {
 		if (typeof number === "undefined") number = 1;
 		var returnCards = [];
@@ -143,13 +173,14 @@ function DiscardPile() {
 		return pile;
 	};
 }
+
 var deck = new Deck();
 var discard = new DiscardPile();
 console.log(deck.cards);
 var cards = deck.cards;
 // console.log(cards.map((card) => Object.values(card)));
-var stack = document.querySelector("#stack");
 stack.innerHTML = "";
-document.getElementById("stack").appendChild(deck.buildDeck());
-document.getElementById("stack").appendChild(discard.init());
+stack.appendChild(deck.buildDeck());
+stack.appendChild(discard.init());
+
 // console.log(deck.buildDeck());

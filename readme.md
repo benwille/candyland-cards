@@ -42,10 +42,11 @@ Ben Wille ([Website](https://benwille.dev) | [Twitter](https://twiter.com/benwil
 
 ### In Progress
 
-### Requests
-
 - Shuffle Button
   - Adding shuffle button after all cards in deck have been used. This will reshuffle the deck.
+
+### Requests
+
 - Player Piles
   - Option to add number of players (up to 4).
   - Create a discard pile for each player
