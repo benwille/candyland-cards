@@ -7,10 +7,15 @@
 	flex-wrap: wrap;
 }
 
-.deck_div,
-.discard_div {
+.deck_div {
 	width: 350px;
 	min-height: 400px;
+	position: relative;
+}
+
+.discard_div {
+	width: 350px;
+	min-height: 350px;
 	position: relative;
 }
 
