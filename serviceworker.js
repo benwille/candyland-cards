@@ -1,4 +1,4 @@
-const cacheName = "candyland-102221";
+const cacheName = "candyland-102321";
 const precacheList = [
 	"index.html",
 	"manifest.json",
