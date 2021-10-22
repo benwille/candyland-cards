@@ -60,18 +60,18 @@ function Card(suit, number) {
 	};
 }
 
+var counter = 0;
 var cardClick = (function (e) {
-	var counter = 0;
-
 	return function (e) {
 		e.currentTarget.style.top = 0;
 		e.currentTarget.style.left = 0;
 		e.currentTarget.style.zIndex = counter;
 		counter++;
-		// console.log(counter);
+		console.log(counter);
 		if (counter >= 66) {
 			counter = 0;
 			deck.rebuildDeck();
+			document.getElementById("endGame").style.display = "none";
 		}
 		var cardID = e.currentTarget;
 		cardID.onclick = "";
@@ -86,7 +86,60 @@ function shuffleClick(e) {
 	stack.appendChild(deck.buildDeck());
 	stack.appendChild(discard.init());
 	// console.log(e.target.parentNode);
-	e.target.parentNode.innerHTML = "";
+	// e.target.parentNode.innerHTML = "";
+	stack.appendChild(endGame.init());
+	if (document.getElementById("shuffle")) {
+		this.remove();
+	}
+}
+
+function EndGame() {
+	var button_div = document.createElement("div");
+	button_div.id = "endGame";
+	this.init = function () {
+		Object.assign(button_div.style, {
+			display: "block",
+			flex: "1 0 100%",
+		});
+		button_div.innerHTML = "";
+		var restart = document.createElement("button");
+		restart.className = "restart";
+		restart.innerText = "End Game";
+		button_div.appendChild(restart);
+		console.log(button_div);
+		// stack.parentNode.appendChild(button_div);
+		restart.onclick = this.confirmRestart;
+		return button_div;
+	};
+	this.confirmRestart = function () {
+		console.log("Are you sure?");
+		var confirm_div = document.getElementById("endGame");
+		confirm_div.innerHTML = "<p>Are you sure?</p>";
+		var buttonYes = document.createElement("button");
+		var buttonNo = document.createElement("button");
+		buttonYes.className = "restart";
+		buttonNo.className = "btn-danger";
+		buttonYes.innerText = "Yes";
+		buttonNo.innerText = "No";
+		buttonYes.onclick = function () {
+			console.log("restarting...");
+			shuffleClick();
+			counter = 0;
+			// this.init();
+		};
+		buttonNo.onclick = function () {
+			endGame.init();
+		};
+		confirm_div.append(buttonYes, buttonNo);
+	};
+	this.confirmYes = function () {
+		console.log("restarting...");
+		// shuffleClick();
+		// this.init();
+	};
+	this.confirmNo = function () {
+		// this.init();
+	};
 }
 
 function Deck() {
@@ -146,6 +199,8 @@ function Deck() {
 		});
 
 		var button = document.createElement("button");
+		button_div.id = "shuffle";
+		button.className = "shuffle";
 		button.innerText = "Shuffle";
 		button_div.appendChild(button);
 		console.log(button_div);
@@ -176,11 +231,13 @@ function DiscardPile() {
 
 var deck = new Deck();
 var discard = new DiscardPile();
+var endGame = new EndGame();
 console.log(deck.cards);
 var cards = deck.cards;
 // console.log(cards.map((card) => Object.values(card)));
 stack.innerHTML = "";
 stack.appendChild(deck.buildDeck());
 stack.appendChild(discard.init());
+stack.appendChild(endGame.init());
 
 // console.log(deck.buildDeck());

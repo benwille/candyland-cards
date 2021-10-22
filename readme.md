@@ -37,13 +37,13 @@ Ben Wille ([Website](https://benwille.dev) | [Twitter](https://twiter.com/benwil
 
 - 1.0
   - Initial Release
+- 2.0
+  - Added shuffle button at the end of the deck to reshuffle deck
+  - Added end game button to restart a game if you finish halfway through the deck
 
 ## Coming Soon
 
 ### In Progress
-
-- Shuffle Button
-  - Adding shuffle button after all cards in deck have been used. This will reshuffle the deck.
 
 ### Requests
 
